@@ -1,0 +1,100 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-android</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!--
+      Enable trim analyzers for Android class libraries.
+      To learn more, see: https://learn.microsoft.com/dotnet/core/deploying/trimming/prepare-libraries-for-trimming
+    -->
+    <IsTrimmable>true</IsTrimmable>
+    <!--
+      NOTE: you can simply add .aar or .jar files in this directory to be included in the project.
+      To learn more, see: https://learn.microsoft.com/dotnet/maui/migration/android-binding-projects
+    -->
+    <NoWarn>CS0108</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyName>@(Model.NuGetPackageId)</AssemblyName>
+    <RootNamespace>@(Model.NuGetPackageId)</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--
+    VersionSuffix - For debugging and local nuget feed 
+    <VersionSuffix>alpha-$([System.DateTime]::Now.ToString('yyyyMMddHHmm'))</VersionSuffix>
+    -->        
+    <PackageVersion>@(Model.NuGetVersion)</PackageVersion>
+    <InformationalVersion>@(Model.NuGetVersion)</InformationalVersion>
+
+    <PackageId>@(Model.NuGetPackageId)</PackageId>
+    <Title>@(Model.MavenGroupId):@(Model.Name) for Xamarin.Android</Title>
+    <Summary>.NET Android binding for @(Model.MavenGroupId):@(Model.Name)</Summary>
+    <Description>.NET Android binding for @(Model.MavenGroupId):@(Model.Name)</Description>
+    <PackageTags>.NET Android bindings (Model.MavenGroupId):@(Model.Name) moljac holisticware</PackageTags>
+    <Authors>moljac, HolisticWare</Authors>
+    <Owners>moljac, HolisticWare</Owners>
+    <Copyright>© moljac, © HolisticWare Corporation. All rights reserved.</Copyright>
+    <PackageProjectUrl>
+    </PackageProjectUrl>
+    <!-- 
+    <PackageLicenseFile>../../LICENSE</PackageLicenseFile>
+    <PackageIconUrl></PackageIconUrl>
+    -->
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="LICENSE" />
+    -->
+    <None Include="..\..\README.md" Pack="true" PackagePath="README.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TransformFile Include="..\..\source\@(Model.MavenGroupId)\@(Model.Name)\Transforms\*.xml" Link="Transforms\%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\source\@(Model.MavenGroupId)\@(Model.Name)\Additions\*.cs" Link="Additions\%(Filename)%(Extension)" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <AndroidLibrary 
+      Condition="Exists('..\..\externals\@(Model.Name).aar')"
+      Include="..\..\externals\@(Model.Name).aar" 
+      Bind="@(Model.ShouldBindArtifact.ToString())" 
+      />
+    <AndroidLibrary 
+      Condition="Exists('..\..\externals\@(Model.Name).jar')"
+      Include="..\..\externals\@(Model.Name).jar" 
+      Bind="@(Model.ShouldBindArtifact.ToString())" 
+      />
+    <!--
+    <AndroidLibrary 
+      Condition="Exists('..\..\externals\@(Model.MavenGroupId)\@(Model.Name).aar')"
+      Include="..\..\externals\@(Model.MavenGroupId)\@(Model.Name).aar" 
+      Bind="@(Model.ShouldBindArtifact.ToString())" 
+      />
+    <AndroidLibrary 
+      Condition="Exists('..\..\externals\@(Model.MavenGroupId)\@(Model.Name).jar')"
+      Include="..\..\externals\@(Model.MavenGroupId)\@(Model.Name).jar" 
+      Bind="@(Model.ShouldBindArtifact.ToString())" 
+      />
+      -->
+  </ItemGroup>
+
+  <ItemGroup>
+    @foreach (var dep in @Model.NuGetDependencies)
+    {
+      if (dep.IsProjectReference) 
+      {
+    <ProjectReference Include="..\@(dep.MavenArtifact.MavenGroupId).@(dep.MavenArtifact.MavenArtifactId)\@(dep.MavenArtifact.MavenGroupId).@(dep.MavenArtifact.MavenArtifactId).csproj" PrivateAssets="none" />
+      } else {
+    <PackageReference Include="@(dep.NuGetPackageId)" Version="@(dep.NuGetVersion)" />
+      }
+    }
+  </ItemGroup>
+
+</Project>
