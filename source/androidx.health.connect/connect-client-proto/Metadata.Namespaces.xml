@@ -1,0 +1,10 @@
+<metadata>
+    <attr
+        path="/api/package[@name='']"
+        name="managedName"
+        >
+        HolisticWare.AndroidX.Jetpack.Health.
+    </attr>
+
+
+</metadata>
