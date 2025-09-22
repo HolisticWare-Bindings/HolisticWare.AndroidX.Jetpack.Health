@@ -1,0 +1,45 @@
+<metadata>
+    <attr
+        path="/api/package[@name='androidx.health.services.client']"
+        name="managedName"
+        >
+        HolisticWare.AndroidX.Jetpack.Health.Services.Client
+    </attr>
+    <attr
+        path="/api/package[@name='androidx.health.services.client.data']"
+        name="managedName"
+        >
+        HolisticWare.AndroidX.Jetpack.Health.Services.Client.Data
+    </attr>
+    <attr
+        path="/api/package[@name='androidx.health.services.client.impl']"
+        name="managedName"
+        >
+        HolisticWare.AndroidX.Jetpack.Health.Services.Client.Impl
+    </attr>
+    <attr
+        path="/api/package[@name='androidx.health.services.client.impl.internal']"
+        name="managedName"
+        >
+        HolisticWare.AndroidX.Jetpack.Health.Services.Client.Impl.Internal
+    </attr>
+    <attr
+        path="/api/package[@name='androidx.health.services.client.impl.ipc']"
+        name="managedName"
+        >
+        HolisticWare.AndroidX.Jetpack.Health.Services.Client.Impl.IPC
+    </attr>
+    <attr
+        path="/api/package[@name='androidx.health.services.client.impl.ipc.internal']"
+        name="managedName"
+        >
+        HolisticWare.AndroidX.Jetpack.Health.Services.Client.Impl.IPC.Internal
+    </attr>
+    <attr
+        path="/api/package[@name='androidx.health.services.client.impl.request']"
+        name="managedName"
+        >
+        HolisticWare.AndroidX.Jetpack.Health.Services.Client.Impl.Request
+    </attr>
+
+</metadata>
