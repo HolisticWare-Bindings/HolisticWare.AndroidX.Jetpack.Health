@@ -62,17 +62,6 @@
   
   <ItemGroup>
     <AndroidLibrary 
-      Condition="Exists('..\..\externals\@(Model.Name).aar')"
-      Include="..\..\externals\@(Model.Name).aar" 
-      Bind="@(Model.ShouldBindArtifact.ToString())" 
-      />
-    <AndroidLibrary 
-      Condition="Exists('..\..\externals\@(Model.Name).jar')"
-      Include="..\..\externals\@(Model.Name).jar" 
-      Bind="@(Model.ShouldBindArtifact.ToString())" 
-      />
-    <!--
-    <AndroidLibrary 
       Condition="Exists('..\..\externals\@(Model.MavenGroupId)\@(Model.Name).aar')"
       Include="..\..\externals\@(Model.MavenGroupId)\@(Model.Name).aar" 
       Bind="@(Model.ShouldBindArtifact.ToString())" 
@@ -80,6 +69,17 @@
     <AndroidLibrary 
       Condition="Exists('..\..\externals\@(Model.MavenGroupId)\@(Model.Name).jar')"
       Include="..\..\externals\@(Model.MavenGroupId)\@(Model.Name).jar" 
+      Bind="@(Model.ShouldBindArtifact.ToString())" 
+      />
+    <!--
+    <AndroidLibrary 
+      Condition="Exists('..\..\externals\@(Model.Name).aar')"
+      Include="..\..\externals\@(Model.Name).aar" 
+      Bind="@(Model.ShouldBindArtifact.ToString())" 
+      />
+    <AndroidLibrary 
+      Condition="Exists('..\..\externals\@(Model.Name).jar')"
+      Include="..\..\externals\@(Model.Name).jar" 
       Bind="@(Model.ShouldBindArtifact.ToString())" 
       />
       -->
