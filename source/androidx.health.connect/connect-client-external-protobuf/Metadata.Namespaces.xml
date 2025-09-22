@@ -1,0 +1,10 @@
+<metadata>
+    <attr
+        path="/api/package[@name='androidx.health.platform.client.proto']"
+        name="managedName"
+        >
+        HolisticWare.AndroidX.Jetpack.Health.Platform.Client.Proto
+    </attr>
+
+
+</metadata>
