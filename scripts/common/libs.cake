@@ -6,10 +6,11 @@ LibrarySourceProjects   = GetFiles(source_projects);
 //----------------------------------------------------------------------------------------------------------------------
 Task("libs")
     .IsDependentOn ("nuget-restore-libs")
+    .IsDependentOn ("libs-dotnet-solutions")
+    .IsDependentOn ("libs-dotnet-solutions-binderator")
+    .IsDependentOn ("libs-dotnet-projects")
     .IsDependentOn ("libs-msbuild-solutions")
     .IsDependentOn ("libs-msbuild-projects")
-    .IsDependentOn ("libs-dotnet-solutions")
-    .IsDependentOn ("libs-dotnet-projects")
     ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -171,3 +172,26 @@ Task("libs-msbuild-projects")
         }
     );
 //---------------------------------------------------------------------------------------
+Task("libs-dotnet-solutions-binderator")
+    .Does
+    (
+        () =>
+        {
+            RunTarget("holisticware-android-binderator");
+            System.Threading.Thread.Sleep(3000);
+
+            foreach (string c in configurations)
+            {
+                DotNetBuild
+                        (
+                            $"{path_project}/generated/HolisticWare.sln",
+                            new DotNetBuildSettings
+                            {
+                                Configuration = c
+                            }
+                        );
+            }
+            return;
+        }
+    );
+
