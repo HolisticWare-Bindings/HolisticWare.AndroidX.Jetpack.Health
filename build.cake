@@ -105,15 +105,13 @@ Task("Default")
     (
         () =>
         {
-            if (FileExists($"{path_project}/config.json"))
-            {
-                RunTarget("holisticware-android-binderator");
-            }
-
-            // RunTarget("unit-tests");
-            // RunTarget("nuget-pack");
-            // RunTarget("samples");
-
+            RunTarget("unit-tests");
+            /*
+            RunTarget("unit-tests");
+            RunTarget("nuget-pack");
+            RunTarget("samples");
+            */
+            
             return;
         }
     );
