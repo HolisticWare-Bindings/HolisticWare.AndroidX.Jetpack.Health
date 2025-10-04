@@ -177,6 +177,11 @@ Task("libs-dotnet-solutions-binderator")
     (
         () =>
         {
+            if ( ! FileExists($"{path_project}/config.json") )
+            {
+                return;
+            }
+
             RunTarget("holisticware-android-binderator");
             System.Threading.Thread.Sleep(3000);
 
