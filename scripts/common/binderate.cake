@@ -13,18 +13,19 @@ Task("holisticware-android-binderator")
                     --config-file ./config.json \
                     --base-path $(pwd) \
             */
-            Process.Start
-            (
-                "holisticware-android-binderator",
-                "binderate"
-                + " " +
-                "--config-file ./config.json"
-                + " " +
-                $"--base-path {path_project}"
-            );
+            if (FileExists($"{path_project}/config.json"))
+            {
+                Process.Start
+                (
+                    "holisticware-android-binderator",
+                    "binderate"
+                    + " " +
+                    $"--config-file {path_project}/config.json"
+                    + " " +
+                    $"--base-path {path_project}"
+                );
+            }
 
-            DotNetBuild("./generated/HolisticWare.sln");
-            
             return;
         }
     );
