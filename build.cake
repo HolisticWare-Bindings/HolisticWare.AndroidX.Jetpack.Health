@@ -19,6 +19,8 @@
 #load "./externals-data.cake"
 
 //---------------------------------------------------------------------------------------
+using System.Diagnostics;
+
 string TARGET = Argument ("t", Argument ("target", "Default"));
 string verbosity = Argument ("v", Argument ("verbosity", "diagnostic"));
 
@@ -51,6 +53,7 @@ string[] clean_folder_patterns = new string[]
 {
     "./externals/",
     "./output/",
+    "./generated/",
     "./**/.vs/",
     "./**/.idea/",
     "./**/*-packages/",
@@ -74,6 +77,7 @@ string[] clean_file_patterns = new string[]
     "./**/*.binlog",
     "./**/.DS_Store",
 };
+readonly string path_project = System.IO.Directory.GetCurrentDirectory();
 
 readonly string line_hash    = new string('#', 120);
 readonly string line_equal   = new string('=', 120);
@@ -85,6 +89,7 @@ readonly string line_dot     = new string('.', 120);
 #load "./scripts/common/main.cake"
 #load "./scripts/common/nuget-restore.cake"
 #load "./scripts/common/nuget-pack.cake"
+#load "./scripts/common/binderate.cake"
 #load "./scripts/common/libs.cake"
 #load "./scripts/common/samples.cake"
 #load "./scripts/common/tests-unit-tests.cake"
@@ -100,9 +105,14 @@ Task("Default")
     (
         () =>
         {
-            RunTarget("unit-tests");
-            RunTarget("nuget-pack");
-            RunTarget("samples");
+            if (FileExists($"{path_project}/config.json"))
+            {
+                RunTarget("holisticware-android-binderator");
+            }
+
+            // RunTarget("unit-tests");
+            // RunTarget("nuget-pack");
+            // RunTarget("samples");
 
             return;
         }
