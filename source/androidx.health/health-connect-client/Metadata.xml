@@ -111,6 +111,90 @@
     -->
     <remove-node
         path="/api/package[@name='androidx.health.connect.client.permission']/class[@name='HealthDataRequestPermissions']"
-        />        
+        />
+
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.proto']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.proto.request']"
+        />
+
+
+    <!--
+    TODO: WORKAROUND!!
+    -->
+    <remove-node
+        path="/api/package[@name='androidx.health.connect.client']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.connect.client.records.metadata']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.connect.client.request']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.connect.client.response']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.connect.client.time']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.connect.client.units']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.data.client.impl']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.changes']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.error']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.impl']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.impl.data']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.impl.error']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.impl.internal']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.impl.ipc']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.impl.ipc.internal']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.impl.permission.foregroundstate']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.impl.permission.token']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.impl.sdkservice']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.permission']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.proto']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.request']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.response']"
+        />
+    <remove-node
+        path="/api/package[@name='androidx.health.platform.client.service']"
+        />
 
 </metadata>
